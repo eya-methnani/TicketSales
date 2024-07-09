@@ -19,11 +19,13 @@ export class SignupComponent {
   errorMessage: string = '';
   successMessage: string = '';
 
+  role: string = 'participant'; // default role
+
   constructor(private cognitoService: CognitoServiceService, private router: Router) { }
 
   onSignUp(form: NgForm) {
     if (form.valid) {
-      this.cognitoService.signUp(this.email, this.password, this.name, this.familyName, this.birthdate)
+      this.cognitoService.signUp(this.email, this.password, this.name, this.familyName, this.birthdate , this.role)
         .then(() => {
           this.errorMessage = '';
           this.successMessage = 'Registration successful! Redirecting to confirmation page...';

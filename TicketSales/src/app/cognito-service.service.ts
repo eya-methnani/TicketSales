@@ -7,6 +7,9 @@ import {
 } from "amazon-cognito-identity-js";
 import { Router } from "@angular/router";
 import { environment } from './../environments/environment';
+import { HttpClient } from '@angular/common/http';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +19,7 @@ export class CognitoServiceService {
   cognitoUser: CognitoUser | null = null;
   username: string = "";
 
-  constructor(private router: Router) { 
+  constructor(private router: Router , private http: HttpClient) { 
     const poolData = {
       UserPoolId: environment.cognitoUserPoolId,
       ClientId: environment.cognitoAppClientId,
@@ -53,7 +56,7 @@ export class CognitoServiceService {
     });
   }
 
-  signUp(email: string, password: string, name: string, familyName: string, birthdate: string): Promise<void> {
+  signUp(email: string, password: string, name: string, familyName: string, birthdate: string ,role:string): Promise<void> {
     return new Promise((resolve, reject) => {
       const attributeList = [];
       attributeList.push(new CognitoUserAttribute({ Name: "email", Value: email }));
@@ -68,14 +71,27 @@ export class CognitoServiceService {
         } else if (result) {
           this.cognitoUser = result.user;
           console.log("User name is " + result.user.getUsername());
-          resolve();
+          this.saveUserRole(email, role)
+            .then(() => resolve())
+            .catch((saveError) => reject(saveError));
         } else {
           reject(new Error("Sign up result is undefined"));
         }
       });
     });
   }
-
+  saveUserRole(email: string, role: string): Promise<void> {
+    const apiEndpoint = environment.apiGatewayEndpoint; // Add your API Gateway endpoint in environment.ts
+    return this.http.post(apiEndpoint, { email, role })
+      .toPromise()
+      .then(() => {
+        console.log("User role saved successfully.");
+      })
+      .catch((error) => {
+        console.error("Error saving user role", error);
+        throw error;
+      });
+  }
   confirmUser(email: string, confirmationCode: string): Promise<void> {
     return new Promise((resolve, reject) => {
       const userData = { Username: email, Pool: this.userPool };
