@@ -1,0 +1,15 @@
+<div class="container">
+    <h1>Confirm Signup</h1>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+    <form (submit)="onConfirm(confirmForm)" #confirmForm="ngForm">
+      <div>
+        <input type="email" placeholder="Email" [(ngModel)]="email" name="email" required>
+      </div>
+      <div>
+        <input type="text" placeholder="Confirmation Code" [(ngModel)]="confirmationCode" name="confirmationCode" required>
+      </div>
+      <button type="submit">Confirm</button>
+    </form>
+  </div>
+  
