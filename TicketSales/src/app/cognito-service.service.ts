@@ -40,12 +40,16 @@ export class CognitoServiceService {
 
       this.cognitoUser.authenticateUser(authenticationDetails, {
         onSuccess: (result: any) => {
+          
+
+
+
           this.router.navigate(["/home"]);
           console.log("Success Results: ", result);
           resolve();
         },
         newPasswordRequired: (userAttributes: any) => {
-          this.router.navigate(["/newPasswordRequire"]);
+          //this.router.navigate(["/newPasswordRequire"]);
           resolve();
         },
         onFailure: (error: any) => {
