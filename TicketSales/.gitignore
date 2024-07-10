@@ -44,3 +44,8 @@ Thumbs.db
 
 
 src/environments/environment*.ts
+
+node_modules
+*/node_modules
+**/node_modules
+**/*.zip

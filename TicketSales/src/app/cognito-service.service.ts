@@ -19,7 +19,7 @@ export class CognitoServiceService {
   cognitoUser: CognitoUser | null = null;
   username: string = "";
 
-  constructor(private router: Router , private http: HttpClient) { 
+  constructor(private router: Router, private http: HttpClient) { 
     const poolData = {
       UserPoolId: environment.cognitoUserPoolId,
       ClientId: environment.cognitoAppClientId,
@@ -56,7 +56,7 @@ export class CognitoServiceService {
     });
   }
 
-  signUp(email: string, password: string, name: string, familyName: string, birthdate: string ,role:string): Promise<void> {
+  signUp(email: string, password: string, name: string, familyName: string, birthdate: string, role: string): Promise<void> {
     return new Promise((resolve, reject) => {
       const attributeList = [];
       attributeList.push(new CognitoUserAttribute({ Name: "email", Value: email }));
@@ -80,18 +80,37 @@ export class CognitoServiceService {
       });
     });
   }
-  saveUserRole(email: string, role: string): Promise<void> {
+/*
+  async saveUserRole(email: string, role: string): Promise<void> {
     const apiEndpoint = environment.apiGatewayEndpoint; // Add your API Gateway endpoint in environment.ts
-    return this.http.post(apiEndpoint, { email, role })
-      .toPromise()
-      .then(() => {
-        console.log("User role saved successfully.");
-      })
-      .catch((error) => {
-        console.error("Error saving user role", error);
-        throw error;
-      });
+    try {
+      await this.http.post(apiEndpoint, { email, role })
+        .toPromise();
+      console.log("User role saved successfully.");
+    } catch (error) {
+      console.error("Error saving user role", error);
+      throw error;
+    }
   }
+  */
+
+
+  async saveUserRole(email: string, role: string): Promise<void> {
+    const apiEndpoint = environment.apiGatewayEndpoint; // Ensure this is defined in environment.ts
+    try {
+      await this.http.post(apiEndpoint, { email, role }).toPromise();
+      console.log("User role saved successfully.");
+    } catch (error) {
+      console.error("Error saving user role", error);
+      throw error;
+    }
+  }
+
+
+
+
+
+
   confirmUser(email: string, confirmationCode: string): Promise<void> {
     return new Promise((resolve, reject) => {
       const userData = { Username: email, Pool: this.userPool };

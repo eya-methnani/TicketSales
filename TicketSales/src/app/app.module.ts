@@ -10,6 +10,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ConfirmSignupComponent } from './confirm-signup/confirm-signup.component';
 
 
+import { HttpClientModule } from '@angular/common/http';  // Import HttpClientModule
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ConfirmSignupComponent } from './confirm-signup/confirm-signup.componen
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
