@@ -7,6 +7,9 @@ import { LoginComponent } from './login/login.component';
 //import { NewPasswordRequireComponent } from './new-password-require/new-password-require.component'
 import { SignupComponent } from './signup/signup.component';
 import { ConfirmSignupComponent } from './confirm-signup/confirm-signup.component';
+import { OrdersComponent } from './orders/orders.component';
+import { AddEventComponent } from './add-event/add-event.component';
+import { MyEventsComponent } from './my-events/my-events.component';
 
 
 const routes: Routes = [
@@ -17,6 +20,11 @@ const routes: Routes = [
   { path: 'confirm-signup', component: ConfirmSignupComponent },
   //{ path: '', component: LoginComponent},
   { path: '', redirectTo:'/login', pathMatch:'full' },
+
+  { path: 'orders', component: OrdersComponent },
+  { path: 'add-event', component: AddEventComponent },
+  { path: 'my-events', component: MyEventsComponent }
+
 ];
 
 @NgModule({
