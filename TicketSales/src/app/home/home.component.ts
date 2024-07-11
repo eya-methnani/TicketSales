@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CognitoServiceService } from "../cognito-service.service";
 
 @Component({
@@ -8,10 +8,25 @@ import { CognitoServiceService } from "../cognito-service.service";
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  userEmail: string = '';
+  userRole: string = '';
+
+
+  
   constructor(
     private authservice: CognitoServiceService
   ) {}
+
+
+
+
+  ngOnInit(): void {
+    this.userEmail = this.authservice.username;
+    this.authservice.userRole.subscribe(role => {
+      this.userRole = role;
+    });
+  }
 
   logOut() {
     this.authservice.logOut();
