@@ -21,26 +21,26 @@ body {
   }
   
   .logo-small {
-    color: #f4511e;
+    color: #0a0099;
     font-size: 50px;
   }
   
   .logo {
-    color: #f4511e;
+    color:  #0a0099;
     font-size: 200px;
   }
   
   .carousel-control-prev, .carousel-control-next {
     background-image: none;
-    color: #f4511e;
+    color:  #0a0099;
   }
   
   .carousel-indicators li {
-    border-color: #f4511e;
+    border-color:  #0a0099;
   }
   
   .carousel-indicators li.active {
-    background-color: #f4511e;
+    background-color: #0a0099;
   }
   
   .item h4 {

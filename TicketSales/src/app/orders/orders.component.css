@@ -1,0 +1,94 @@
+.container {
+    max-width: 1200px;
+  }
+  
+  .card {
+    height:600px ;
+    border: none;
+    margin-bottom: 30px;
+    background-color: rgb(236, 243, 255);
+  }
+  
+  .card-img-top {
+    max-height: 400px;
+    object-fit: cover;
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  
+  .card-subtitle {
+    text-align: center;
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  .btn-block {
+    display: block;
+    width: 100%;
+    border: 1px solid #000;
+    font-weight: bold;
+    margin-top: 10px;
+    text-transform: uppercase;
+  }
+  
+
+
+  .cart {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 300px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 1000;
+  }
+  
+  .cart-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  .list-group-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .list-group-item:last-child {
+    border-bottom: none;
+  }
+  
+  .list-group-item h6 {
+    margin-bottom: 0;
+  }
+  
+  .list-group-item small {
+    display: block;
+  }
+  
+  .cart-total {
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 15px;
+  }
+  
+  .btn-outline-danger {
+    margin-left: 10px;
+  }

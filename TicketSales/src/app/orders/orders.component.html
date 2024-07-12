@@ -1,1 +1,36 @@
-<p>orders works!</p>
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Available Events</h2>
+    <div class="row">
+      <div *ngFor="let event of events" class="col-md-4 mb-4">
+        <div class="card">
+          <img class="card-img-top" [src]="event.photo" alt="Event photo">
+          <div class="card-body">
+            <h5 class="card-title">{{ event.name }}</h5>
+            <p class="card-subtitle mb-2 text-muted">{{ event.description }}</p>
+            <p class="card-text"><strong>$</strong>{{ event.price }}</p>
+            <p class="card-text"><strong>Date:</strong> {{ event.date }}</p>
+            <p class="card-text"><strong>Capacity:</strong> {{ event.capacity }}</p>
+            <p class="card-text"><strong>Contact:</strong> {{ event.email }}</p>
+            <button class="btn btn-outline-dark btn-block" (click)="addToCart(event)" [disabled]="event.capacity <= 0">Add to Bag</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="cart fixed-bottom">
+    <h5 class="cart-title">Your Cart</h5>
+    <ul class="list-group mb-3">
+      <li *ngFor="let item of cart; let i = index" class="list-group-item d-flex justify-content-between lh-condensed">
+        <div>
+          <h6 class="my-0">{{ item.name }}</h6>
+          <small class="text-muted">Price: ${{ item.price }} | Capacity: {{ item.capacity }}</small>
+          <button class="btn btn-outline-danger btn-sm" (click)="removeFromCart(i)">Remove</button>
+        </div>
+        <span class="text-muted">${{ item.price }}</span>
+      </li>
+    </ul>
+    <h6 class="cart-total">Total: ${{ totalPrice }}</h6>
+    <button class="btn btn-outline-dark btn-block">Check</button>
+  </div>

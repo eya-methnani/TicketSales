@@ -1,31 +1,46 @@
 <div class="container mt-5">
-    <h2>Create New Event</h2>
-    <form (ngSubmit)="onSubmit()" #eventForm="ngForm">
-      <div class="form-group">
-        <label for="name">Event Name</label>
-        <input type="text" class="form-control" id="name" required [(ngModel)]="event.name" name="name">
+  <div class="row">
+    <div class="col-md-6  py-5 px-4">
+      <h2 class="mb-4">Create New Event</h2>
+      <form (ngSubmit)="onSubmit()" #eventForm="ngForm">
+        <div class="form-group">
+          <label for="name">Event Name</label>
+          <input type="text" class="form-control" id="name" required [(ngModel)]="event.name" name="name">
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea class="form-control" id="description" required [(ngModel)]="event.description" name="description"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="photo">Photo</label>
+          <input type="file" class="form-control" id="photo" required (change)="onFileChange($event)">
+        </div>
+        <div class="form-group">
+          <label for="date">Event Date</label>
+          <input type="date" class="form-control" id="date" required [(ngModel)]="event.date" name="date">
+        </div>
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input type="number" class="form-control" id="price" required [(ngModel)]="event.price" name="price">
+        </div>
+        <div class="form-group">
+          <label for="capacity">Capacity</label>
+          <input type="number" class="form-control" id="capacity" [(ngModel)]="event.capacity" name="capacity">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3">Submit</button>
+      </form>
+    </div>
+    <div class="col-md-6 gradient-custom-2 text-white d-flex align-items-center justify-content-center py-5 px-4">
+      <div class="text-center">
+        <h3>Contact us</h3>
+        <p>We're open for any suggestion or just to have a chat</p>
+        <p><i class="fa fa-map-marker"></i> Address: 6 Rue Claude Farrère, 75016 Paris</p>
+        <p><i class="fa fa-phone"></i> Phone: +1235 2355 98</p>
+        <p><i class="fa fa-envelope"></i> Email: infoyourwebsite.com</p>
+        <p><i class="fa fa-globe"></i> Website: yourwebsite.com</p>
+        
       </div>
-      <div class="form-group">
-        <label for="description">Description</label>
-        <textarea class="form-control" id="description" required [(ngModel)]="event.description" name="description"></textarea>
-      </div>
-      <div class="form-group">
-        <label for="photo">Photo</label>
-        <input type="file" class="form-control" id="photo" (change)="onFileChange($event)">
-      </div>
-      <div class="form-group">
-        <label for="date">Event Date</label>
-        <input type="date" class="form-control" id="date" required [(ngModel)]="event.date" name="date">
-      </div>
-      <div class="form-group">
-        <label for="price">Price</label>
-        <input type="number" class="form-control" id="price" required [(ngModel)]="event.price" name="price">
-      </div>
-      <div class="form-group">
-        <label for="capacity">Capacity</label>
-        <input type="number" class="form-control" id="capacity" required [(ngModel)]="event.capacity" name="capacity">
-      </div>
-      <button type="submit" class="btn btn-primary mt-3">Submit</button>
-    </form>
+    </div>
   </div>
-  
+</div>
