@@ -10,6 +10,7 @@ import { ConfirmSignupComponent } from './confirm-signup/confirm-signup.componen
 import { OrdersComponent } from './orders/orders.component';
 import { AddEventComponent } from './add-event/add-event.component';
 import { MyEventsComponent } from './my-events/my-events.component';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
 
 
 const routes: Routes = [
@@ -23,7 +24,9 @@ const routes: Routes = [
 
   { path: 'orders', component: OrdersComponent },
   { path: 'add-event', component: AddEventComponent },
-  { path: 'my-events', component: MyEventsComponent }
+  { path: 'my-events', component: MyEventsComponent },
+  { path: 'my-orders', component: MyOrdersComponent },
+
 
 ];
 

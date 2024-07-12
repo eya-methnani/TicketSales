@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../event.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-orders',
@@ -11,7 +12,7 @@ export class OrdersComponent implements OnInit {
   cart:any[]=[];
   totalPrice:number=0;
 
-  constructor(private eventService: EventService) {}
+  constructor(private eventService: EventService, private router:Router ) {}
 
   ngOnInit(): void {
     this.fetchEvents();
@@ -54,6 +55,16 @@ export class OrdersComponent implements OnInit {
     }
   }
 
+
+
+  checkout() {
+    this.eventService.updateEventCapacities(this.cart).subscribe(response => {
+      console.log('Event capacities updated successfully', response);
+      this.router.navigate(['/my-orders'], { state: { cart: this.cart } });
+    }, error => {
+      console.error('Error updating event capacities', error);
+    });
+  }
 
 
 

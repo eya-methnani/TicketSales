@@ -1,1 +1,25 @@
-<p>my-orders works!</p>
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Your Orders</h2>
+    <div *ngIf="cart.length === 0" class="text-center">
+      <p>Your cart is empty.</p>
+    </div>
+    <div *ngIf="cart.length > 0">
+      <div class="row">
+        <div *ngFor="let item of cart" class="col-md-4 mb-4">
+          <div class="card">
+            <img class="card-img-top" [src]="item.photo" alt="Event photo">
+            <div class="card-body">
+              <h5 class="card-title">{{ item.name }}</h5>
+              <p class="card-subtitle mb-2 text-muted">{{ item.description }}</p>
+              <p class="card-text"><strong>$</strong>{{ item.price }}</p>
+              <p class="card-text"><strong>Date:</strong> {{ item.date }}</p>
+              <p class="card-text"><strong>Quantity:</strong> {{ item.quantity }}</p>
+              <p class="card-text"><strong>Contact:</strong> {{ item.email }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h6 class="cart-total">Total: ${{ totalPrice }}</h6>
+    </div>
+  </div>
+  

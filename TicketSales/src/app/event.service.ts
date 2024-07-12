@@ -70,4 +70,11 @@ export class EventService {
   }
 
 
+
+  updateEventCapacities(cart: any[]): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/update`, cart);
+  }
+
+
+
 }
