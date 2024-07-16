@@ -10,6 +10,7 @@ import { map, catchError } from 'rxjs/operators';
 export class EventService {
   private apiUrl = `${environment.apiGatewayEndpointEventCreator}/items`;
 
+  private orderUrl =`${environment.apiGatewayEndpointOrderCreator}/items`;
 
   private s3Url = `${environment.apiGatewayEndpointEventCreator}/upload-photo`;
 
@@ -74,6 +75,28 @@ export class EventService {
   updateEventCapacities(cart: any[]): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/update`, cart);
   }
+
+
+
+
+  createOrder(order: any): Observable<any> {
+    return this.http.post<any>(this.orderUrl, order, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    });
+  }
+
+
+  getOrdersByEmail(email: string): Observable<any> {
+    return this.http.get<any>(`${this.orderUrl}?email=${email}`);
+  }
+  
+
+  
+  generateTicket(order: any): Observable<any> {
+    const apiUrlTicket = 'https://vshyvhd7g8.execute-api.us-east-1.amazonaws.com/generate-pdf'; // Replace with your actual URL
+    return this.http.post<any>(apiUrlTicket, order);
+  }
+  
 
 
 

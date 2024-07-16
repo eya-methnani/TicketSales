@@ -1,0 +1,17 @@
+{
+  "name": "createorders",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.614.0",
+    "aws-sdk": "^2.1659.0",
+    "rest": "^2.0.0"
+  }
+}

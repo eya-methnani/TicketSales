@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../event.service';
 import { Router } from '@angular/router';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-orders',
@@ -11,11 +12,15 @@ export class OrdersComponent implements OnInit {
   events: any[] = [];
   cart:any[]=[];
   totalPrice:number=0;
+  userEmail:string='';
 
-  constructor(private eventService: EventService, private router:Router ) {}
+  constructor(private eventService: EventService, private router:Router, private sharedService :SharedService ) {}
 
   ngOnInit(): void {
     this.fetchEvents();
+    this.sharedService.currentEmail.subscribe(email => {
+      this.userEmail = email;
+    });
   }
 
   fetchEvents() {
@@ -58,6 +63,21 @@ export class OrdersComponent implements OnInit {
 
 
   checkout() {
+    const order = {
+      email: this.userEmail,
+      cart: this.cart
+    };
+
+    this.eventService.createOrder(order).subscribe(response => {
+      console.log('Order created successfully', response);
+      this.cart = [];
+      this.totalPrice = 0;
+    }, error => {
+      console.error('Error creating order', error);
+    });
+
+
+    
     this.eventService.updateEventCapacities(this.cart).subscribe(response => {
       console.log('Event capacities updated successfully', response);
       this.router.navigate(['/my-orders'], { state: { cart: this.cart } });

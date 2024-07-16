@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { EventService } from '../event.service';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-my-orders',
@@ -7,20 +8,47 @@ import { Router } from '@angular/router';
   styleUrls: ['./my-orders.component.css']
 })
 export class MyOrdersComponent implements OnInit {
-  cart: any[] = [];
-  totalPrice: number = 0;
+  orders: any[] = [];
+  userEmail: string = '';
 
-  constructor(private router: Router) {}
+  constructor(private eventService: EventService, private sharedService: SharedService) {}
 
   ngOnInit(): void {
-    const navigation = this.router.getCurrentNavigation();
-    if (navigation?.extras.state?.['cart']) {
-      this.cart = navigation.extras.state['cart'];
-      this.calculateTotalPrice();
-    }
+    this.sharedService.currentEmail.subscribe(email => {
+      this.userEmail = email;
+      this.fetchOrders();
+    });
   }
 
-  calculateTotalPrice() {
-    this.totalPrice = this.cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  fetchOrders() {
+    this.eventService.getOrdersByEmail(this.userEmail).subscribe((response: any) => {
+      this.orders = response.Items;
+    }, error => {
+      console.error('Error fetching orders', error);
+    });
   }
+
+
+  generateTicket(order: any) {
+    this.eventService.generateTicket({
+      orderId: order.orderId,
+      eventName: order.eventName,
+      eventDate: order.eventDate,
+      price: order.price,
+      quantity: order.quantity,
+      contact: order.contact
+    }).subscribe((response: any) => {
+      const url = response.url;
+      this.openInNewTab(url);
+    }, error => {
+      console.error('Error generating ticket', error);
+    });
+  }
+
+  openInNewTab(url: string) {
+    window.open(url, '_blank');
+  }
+
+  
+
 }
