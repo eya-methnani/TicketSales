@@ -30,23 +30,18 @@ export class MyOrdersComponent implements OnInit {
 
 
   generateTicket(order: any) {
-    this.eventService.generateTicket({
-      orderId: order.orderId,
-      eventName: order.eventName,
-      eventDate: order.eventDate,
-      price: order.price,
-      quantity: order.quantity,
-      contact: order.contact
-    }).subscribe((response: any) => {
-      const url = response.url;
-      this.openInNewTab(url);
-    }, error => {
-      console.error('Error generating ticket', error);
-    });
-  }
-
-  openInNewTab(url: string) {
-    window.open(url, '_blank');
+    this.eventService.generateTicket(order).subscribe(
+      (response: any) => {
+        if (response.url) {
+          window.open(response.url, '_blank');
+        } else {
+          console.error('Error generating ticket:', response);
+        }
+      },
+      (error) => {
+        console.error('Error generating ticket:', error);
+      }
+    );
   }
 
   

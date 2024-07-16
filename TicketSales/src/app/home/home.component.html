@@ -5,7 +5,6 @@
 
   <div *ngIf="userRole === 'event_creator'">
     <h3 class="lead">Welcome, Event Creator! You can add and manage your events.</h3>
-    <button class="btn btn-outline-light btn-lg m-2" disabled>Buy</button>
     <button class="btn btn-outline-light btn-lg m-2" (click)="navigateTo('add-event')">Add Event</button>
     <button class="btn btn-outline-light btn-lg m-2" (click)="navigateTo('my-events')">Show My Events</button>
   </div>
@@ -13,7 +12,6 @@
   <div *ngIf="userRole === 'participant'">
     <p class="lead">Welcome, Participant! You can browse and buy tickets for events.</p>
     <button class="btn btn-outline-light btn-lg m-2" (click)="navigateTo('orders')">Buy</button>
-    <button class="btn btn-outline-light btn-lg m-2" disabled>Add Event</button>
     <button class="btn btn-outline-light btn-lg m-2" (click)="navigateTo('my-orders')">Show My Orders</button>
   </div>
 </div>

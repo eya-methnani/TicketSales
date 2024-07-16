@@ -7,10 +7,33 @@ exports.handler = async (event) => {
         const requestBody = JSON.parse(event.body);
         const { email, cart } = requestBody;
 
-        // Create an order item for each event in the cart
-        const orderItems = cart.map(item => ({
-            PutRequest: {
-                Item: {
+        for (const item of cart) {
+            const params = {
+                TableName: ordersTableName,
+                Key: {
+                    id: item.id
+                }
+            };
+
+            const result = await dynamoDB.get(params).promise();
+
+            if (result.Item && result.Item.email === email) {
+                // Order already exists for the same user, update the quantity
+                const updateParams = {
+                    TableName: ordersTableName,
+                    Key: {
+                        id: item.id
+                    },
+                    UpdateExpression: 'set quantity = quantity + :quantity',
+                    ExpressionAttributeValues: {
+                        ':quantity': item.quantity
+                    },
+                    ReturnValues: 'UPDATED_NEW'
+                };
+                await dynamoDB.update(updateParams).promise();
+            } else {
+                // Order does not exist or exists for a different user, create a new order
+                const newItem = {
                     email: email,
                     id: item.id,
                     eventName: item.name,
@@ -20,18 +43,16 @@ exports.handler = async (event) => {
                     photo: item.photo,
                     description: item.description,
                     contact: item.email
-                }
-            }
-        }));
+                };
 
-        // Batch write to DynamoDB
-        const params = {
-            RequestItems: {
-                [ordersTableName]: orderItems
-            }
-        };
+                const putParams = {
+                    TableName: ordersTableName,
+                    Item: newItem
+                };
 
-        await dynamoDB.batchWrite(params).promise();
+                await dynamoDB.put(putParams).promise();
+            }
+        }
 
         return {
             statusCode: 200,

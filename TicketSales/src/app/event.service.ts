@@ -93,8 +93,9 @@ export class EventService {
 
   
   generateTicket(order: any): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const apiUrlTicket = 'https://vshyvhd7g8.execute-api.us-east-1.amazonaws.com/generate-pdf'; // Replace with your actual URL
-    return this.http.post<any>(apiUrlTicket, order);
+    return this.http.post<any>(apiUrlTicket, JSON.stringify(order), { headers });
   }
   
 
