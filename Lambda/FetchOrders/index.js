@@ -8,7 +8,6 @@ exports.handler = async (event) => {
 
         const params = {
             TableName: ordersTableName,
-            IndexName: 'email-index', // Ensure you have a secondary index on the email attribute if email is not the primary key
             KeyConditionExpression: '#email = :email',
             ExpressionAttributeNames: {
                 '#email': 'email'

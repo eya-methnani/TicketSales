@@ -1,0 +1,18 @@
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Orders for Event ID: {{ eventId }}</h2>
+    <div *ngIf="orders.length === 0" class="text-center">
+      <p>No orders found for this event.</p>
+    </div>
+    <div class="row">
+      <div *ngFor="let order of orders" class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Order for {{ order.eventName }}</h5>
+            <p class="card-text"><strong>Email:</strong> {{ order.email }}</p>
+            <p class="card-text"><strong>Quantity:</strong> {{ order.quantity }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

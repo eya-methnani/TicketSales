@@ -100,5 +100,28 @@ export class EventService {
   
 
 
+  getEventsByEmail(email: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/events-by-email?email=${email}`).pipe(
+      catchError(error => {
+        console.error('Error fetching events', error);
+        return throwError(error);
+      })
+    );
+  }
+
+
+
+
+  getOrdersByEventId(eventId: string): Observable<any> {
+    return this.http.get<any>(`${this.orderUrl}/events?eventId=${eventId}`).pipe(
+      catchError(error => {
+        console.error('Error fetching orders by event ID', error);
+        return throwError(error);
+      })
+    );
+}
+
+
+
 
 }

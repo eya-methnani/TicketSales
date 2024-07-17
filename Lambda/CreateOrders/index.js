@@ -7,51 +7,29 @@ exports.handler = async (event) => {
         const requestBody = JSON.parse(event.body);
         const { email, cart } = requestBody;
 
+        // Iterate through the cart items to create or update orders
         for (const item of cart) {
             const params = {
                 TableName: ordersTableName,
                 Key: {
+                    email: email,
                     id: item.id
-                }
+                },
+                UpdateExpression: "SET eventName = :eventName, eventDate = :eventDate, price = :price, quantity = if_not_exists(quantity, :initial) + :quantity, photo = :photo, description = :description, contact = :contact",
+                ExpressionAttributeValues: {
+                    ":eventName": item.name,
+                    ":eventDate": item.date,
+                    ":price": item.price,
+                    ":initial": 0,
+                    ":quantity": item.quantity,
+                    ":photo": item.photo,
+                    ":description": item.description,
+                    ":contact": item.email
+                },
+                ReturnValues: "ALL_NEW"
             };
 
-            const result = await dynamoDB.get(params).promise();
-
-            if (result.Item && result.Item.email === email) {
-                // Order already exists for the same user, update the quantity
-                const updateParams = {
-                    TableName: ordersTableName,
-                    Key: {
-                        id: item.id
-                    },
-                    UpdateExpression: 'set quantity = quantity + :quantity',
-                    ExpressionAttributeValues: {
-                        ':quantity': item.quantity
-                    },
-                    ReturnValues: 'UPDATED_NEW'
-                };
-                await dynamoDB.update(updateParams).promise();
-            } else {
-                // Order does not exist or exists for a different user, create a new order
-                const newItem = {
-                    email: email,
-                    id: item.id,
-                    eventName: item.name,
-                    eventDate: item.date,
-                    price: item.price,
-                    quantity: item.quantity,
-                    photo: item.photo,
-                    description: item.description,
-                    contact: item.email
-                };
-
-                const putParams = {
-                    TableName: ordersTableName,
-                    Item: newItem
-                };
-
-                await dynamoDB.put(putParams).promise();
-            }
+            await dynamoDB.update(params).promise();
         }
 
         return {
@@ -60,17 +38,17 @@ exports.handler = async (event) => {
                 'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Credentials': true,
             },
-            body: JSON.stringify({ message: 'Orders created successfully' }),
+            body: JSON.stringify({ message: 'Orders created/updated successfully' }),
         };
     } catch (error) {
-        console.error('Error creating orders:', error);
+        console.error('Error creating/updating orders:', error);
         return {
             statusCode: 500,
             headers: {
                 'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Credentials': true,
             },
-            body: JSON.stringify({ error: 'Could not create orders' }),
+            body: JSON.stringify({ error: 'Could not create/update orders' }),
         };
     }
 };

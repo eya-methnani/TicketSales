@@ -11,6 +11,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { AddEventComponent } from './add-event/add-event.component';
 import { MyEventsComponent } from './my-events/my-events.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { EventOrdersComponent } from './event-orders/event-orders.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,8 @@ const routes: Routes = [
   { path: 'add-event', component: AddEventComponent },
   { path: 'my-events', component: MyEventsComponent },
   { path: 'my-orders', component: MyOrdersComponent },
+  { path: 'event-orders/:eventId', component: EventOrdersComponent },
+
 
 
 ];

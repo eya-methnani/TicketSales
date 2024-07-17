@@ -18,6 +18,7 @@ import { EventService } from './event.service';
 import { SharedService } from './shared.service';
 import { CognitoServiceService } from './cognito-service.service';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { EventOrdersComponent } from './event-orders/event-orders.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
     AddEventComponent,
     MyEventsComponent,
     MyOrdersComponent,
+    EventOrdersComponent,
   ],
   imports: [
     BrowserModule,
