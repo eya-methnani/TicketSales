@@ -1,0 +1,22 @@
+.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+  background-color: rgba(255, 255, 255, 0.8); /* Blue background */
+}
+
+.navbar-nav .nav-item .nav-link {
+  color: rgb(4, 0, 35);
+}
+
+.btn-outline-light {
+  color: white;
+  border-color: white;
+}
+
+.btn:hover {
+  background-color: white;
+  color: rgba(126, 172, 237, 0.8); /* Blue color on hover */
+}
+
+

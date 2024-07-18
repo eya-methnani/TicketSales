@@ -1,28 +1,43 @@
-<nav class="navbar navbar-inverse sticky-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" routerLink="/home">TicketChainer</a>
-    </div>
+<nav class="navbar navbar-expand-lg sticky-top">
+  <p style="color: aliceblue;"> ... </p>
+  <a class="navbar-brand" routerLink="/home">TicketChainer</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto ">
+      
+      <li class="nav-item active" *ngIf="userRole === 'event_creator'">
+       
     
-    <ul class="nav navbar-nav">
-      <li class="active" *ngIf="userRole === 'event_creator'">
-        <a routerLink="/add-event">Add Event</a>
+          <a class="nav-link" routerLink="/add-event">Add Event</a>
+    
       </li>
-      <li class="active" *ngIf="userRole === 'event_creator'">
-        <a routerLink="/my-events">My Events</a>
+      <li class="nav-item active" *ngIf="userRole === 'event_creator'">
+       
+    
+        <a class="nav-link" routerLink="/my-events">My Events</a>
+  
+    </li>
+      <li class="nav-item active" *ngIf="userRole === 'participant'">
+        
+          <a class="nav-link" routerLink="/orders">Events</a>
       </li>
-      <li class="active" *ngIf="userRole === 'participant'">
-        <a routerLink="/orders">Events</a>
+
+      <li class="nav-item active" *ngIf="userRole === 'participant'">
+        <a class="nav-link" routerLink="/my-orders"><i class="fas fa-shopping-cart" ></i>My Orders</a>
+
       </li>
-      <li class="active" *ngIf="userRole === 'participant'">
-        <a routerLink="/my-orders"><i class="fas fa-shopping-cart"></i> My Orders</a>
-      </li>
+      
     </ul>
 
-    <ul class="nav navbar-nav navbar-right">
-      <li>
-        <button class="btn btn-default navbar-btn" (click)="logOut()">Logout</button>
-      </li>
-    </ul>
+
+  
+
+  </div>
+  <div class="nav-item ml-auto">
+    <button class="btn " (click)="logOut()">Logout</button>
   </div>
 </nav>
