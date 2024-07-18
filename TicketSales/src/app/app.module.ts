@@ -19,6 +19,7 @@ import { SharedService } from './shared.service';
 import { CognitoServiceService } from './cognito-service.service';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { EventOrdersComponent } from './event-orders/event-orders.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -33,12 +34,14 @@ import { EventOrdersComponent } from './event-orders/event-orders.component';
     MyEventsComponent,
     MyOrdersComponent,
     EventOrdersComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    
   ],
   providers: [EventService, SharedService,CognitoServiceService],
   bootstrap: [AppComponent]

@@ -9,6 +9,13 @@
   background: linear-gradient(to top, #248cee, #3684d8, #3641dd, #20058d);
 }
 
+
+@media (min-width: 768px) {
+  .gradient-custom {
+    height: 100% !important;
+  }
+}
+
 .card-registration .select-input.form-control[readonly]:not([disabled]) {
   font-size: 1rem;
   line-height: 2.15;

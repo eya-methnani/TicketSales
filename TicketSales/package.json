@@ -23,6 +23,7 @@
     "aws-amplify": "^6.3.8",
     "bootstrap": "^5.3.3",
     "jquery": "^3.7.1",
+    "popper.js": "^1.16.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
   },

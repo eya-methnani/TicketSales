@@ -8,8 +8,7 @@ body {
     background: linear-gradient(to right, #248cee, #3684d8, #3641dd, #20058d);
     color: #ffffff;
     padding: 100px 25px;
-    border-radius: 10px;
-    margin-bottom: 50px;
+    margin-bottom: 5px;
   }
   
   .container-fluid {

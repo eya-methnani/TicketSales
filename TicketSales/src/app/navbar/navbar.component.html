@@ -1,0 +1,28 @@
+<nav class="navbar navbar-inverse sticky-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLink="/home">TicketChainer</a>
+    </div>
+    
+    <ul class="nav navbar-nav">
+      <li class="active" *ngIf="userRole === 'event_creator'">
+        <a routerLink="/add-event">Add Event</a>
+      </li>
+      <li class="active" *ngIf="userRole === 'event_creator'">
+        <a routerLink="/my-events">My Events</a>
+      </li>
+      <li class="active" *ngIf="userRole === 'participant'">
+        <a routerLink="/orders">Events</a>
+      </li>
+      <li class="active" *ngIf="userRole === 'participant'">
+        <a routerLink="/my-orders"><i class="fas fa-shopping-cart"></i> My Orders</a>
+      </li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <button class="btn btn-default navbar-btn" (click)="logOut()">Logout</button>
+      </li>
+    </ul>
+  </div>
+</nav>
