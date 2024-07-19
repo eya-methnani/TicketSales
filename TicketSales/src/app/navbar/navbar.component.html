@@ -1,43 +1,63 @@
-<nav class="navbar navbar-expand-lg sticky-top">
-  <p style="color: aliceblue;"> ... </p>
-  <a class="navbar-brand" routerLink="/home">TicketChainer</a>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav ml-auto ">
-      
-      <li class="nav-item active" *ngIf="userRole === 'event_creator'">
-       
+<nav class="navbar navbar-expand-lg shadow-5-strong sticky-top">
+  <div class="container">
     
-          <a class="nav-link" routerLink="/add-event">Add Event</a>
-    
-      </li>
-      <li class="nav-item active" *ngIf="userRole === 'event_creator'">
-       
-    
-        <a class="nav-link" routerLink="/my-events">My Events</a>
-  
-    </li>
-      <li class="nav-item active" *ngIf="userRole === 'participant'">
-        
-          <a class="nav-link" routerLink="/orders">Events</a>
-      </li>
-
-      <li class="nav-item active" *ngIf="userRole === 'participant'">
-        <a class="nav-link" routerLink="/my-orders"><i class="fas fa-shopping-cart" ></i>My Orders</a>
-
-      </li>
-      
-    </ul>
-
-
-  
-
-  </div>
-  <div class="nav-item ml-auto">
-    <button class="btn " (click)="logOut()">Logout</button>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto d-flex flex-row mt-3 mt-lg-0">
+        <li class="nav-item text-center mx-2 mx-lg-1">
+          <a class="nav-link active custom-color" aria-current="page" routerLink="/home">
+            <div>
+              <i class="fas fa-home fa-lg mb-1 custom-color"></i>
+            </div>
+            Home
+          </a>
+        </li>
+        <li class="nav-item active" *ngIf="userRole === 'event_creator'">
+          <a class="nav-link custom-color" routerLink="/add-event">Add Event</a>
+        </li>
+        <li class="nav-item active" *ngIf="userRole === 'event_creator'">
+          <a class="nav-link custom-color" routerLink="/my-events">My Events</a>
+        </li>
+        <li class="nav-item text-center mx-2 mx-lg-1" *ngIf="userRole === 'participant'">
+          <a class="nav-link active custom-color" aria-current="page" routerLink="/my-orders">
+            <div>
+              <i class="fas fa-shopping-cart custom-color"></i>
+            </div>
+            My Orders
+          </a>
+        </li>
+        <li class="nav-item text-center mx-2 mx-lg-1" *ngIf="userRole === 'participant'">
+          <a class="nav-link active custom-color" aria-current="page" routerLink="/orders">
+            <div>
+              <i class="fas fa-globe-americas fa-lg mb-1 custom-color"></i>
+            </div>
+            Events
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item text-center mx-2 mx-lg-1">
+          <a class="nav-link active custom-color" aria-current="page" routerLink="/login">
+            <div>
+              <i class="fa-solid fa-right-from-bracket custom-color"></i>
+            </div>
+            Logout
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(9).jpg" class="rounded-circle" height="40" alt="" loading="lazy" />
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+            <li><p class="dropdown-item custom-color">Email: {{ userEmail }}</p></li>
+            <li><p class="dropdown-item custom-color">Role: {{ userRole }}</p></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>

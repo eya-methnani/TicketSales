@@ -1,19 +1,16 @@
 <app-navbar></app-navbar>
+
 <div class="jumbotron text-center align-items-center gradient-custom-2">
-  <h1 class="display-4">Welcome to TicketChainer</h1>
-  <p class="lead">Email: {{ userEmail }}</p>
-  <p class="lead">Role: {{ userRole }}</p>
-
-  <div *ngIf="userRole === 'event_creator'">
-    <h3 class="lead">Welcome, Event Creator! You can add and manage your events.</h3>
-    <button class="btn btn-outline-light btn-lg m-2" (click)="navigateTo('add-event')">Add Event</button>
-    <button class="btn btn-outline-light btn-lg m-2" (click)="navigateTo('my-events')">Show My Events</button>
-  </div>
-
-  <div *ngIf="userRole === 'participant'">
-    <p class="lead">Welcome, Participant! You can browse and buy tickets for events.</p>
-    <button class="btn btn-outline-light btn-lg m-2" (click)="navigateTo('orders')">Buy</button>
-    <button class="btn btn-outline-light btn-lg m-2" (click)="navigateTo('my-orders')">Show My Orders</button>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 text-left">
+        <h1 class="display-4">Beyond ticketing... a customizable and personalized e-commerce product</h1>
+        <p class="lead">Our product offers a purchase journey and a back office that allows you to manage ticketing operations.</p>
+      </div>
+      <div class="col-md-6 text-right">
+        <img src="https://cdn.prod.website-files.com/61cee5eb4d566d3471eca114/624581ab391c3d3936ff2734_Event-Ticket-Sales.png" class="main-image" alt="Event Ticket Sales">
+      </div>
+    </div>
   </div>
 </div>
 
@@ -21,38 +18,49 @@
   <h2>SERVICES</h2>
   <h4 class="mb-5">What we offer</h4>
   <div class="row">
-    <div class="col-sm-4">
-      <i class="fas fa-bolt logo-small"></i>
-      <h4>POWER</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
+    <div class="col-sm-3" style="background: #f5f9fe;">
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/7443/7443434.png " class="card-img-top" alt="Cross-selling" style="width: 100px; position:center ;">
+        <div class="card-body">
+          <h4 class="card-title">Cross-selling</h4>
+          <p class="card-text">
+            <i class="fas fa-shield-alt"></i> Highlighting bundled offers directly in the purchase journey.
+          </p>
+        </div>
+      </div>
     </div>
-    <div class="col-sm-4">
-      <i class="fas fa-heart logo-small"></i>
-      <h4>LOVE</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
+    <div class="col-sm-3" style="background: #f5f9fe;">
+      <div class="card">
+        <img src="image-url-2" class="card-img-top" alt="Analytics">
+        <div class="card-body">
+          <h4 class="card-title">Analytics</h4>
+          <p class="card-text">
+            <i class="fas fa-shield-alt"></i> Implementing tracking in all our online purchase journeys and access to advanced dashboards.
+          </p>
+        </div>
+      </div>
     </div>
-    <div class="col-sm-4">
-      <i class="fas fa-lock logo-small"></i>
-      <h4>JOB DONE</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
+    <div class="col-sm-3" style="background: #f5f9fe;">
+      <div class="card">
+        <img src="image-url-3" class="card-img-top" alt="Digital Engagement">
+        <div class="card-body">
+          <h4 class="card-title">Digital Engagement</h4>
+          <p class="card-text">
+            <i class="fas fa-shield-alt"></i> Access to our ecosystem of partner solutions to optimize community engagement.
+          </p>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="row mt-5">
-    <div class="col-sm-4">
-      <i class="fas fa-leaf logo-small"></i>
-      <h4>GREEN</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
-    </div>
-    <div class="col-sm-4">
-      <i class="fas fa-certificate logo-small"></i>
-      <h4>CERTIFIED</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
-    </div>
-    <div class="col-sm-4">
-      <i class="fas fa-wrench logo-small"></i>
-      <h4>HARD WORK</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
+    <div class="col-sm-3" style="background: #f5f9fe;">
+      <div class="card">
+        <img src="image-url-4" class="card-img-top" alt="SSO">
+        <div class="card-body">
+          <h4 class="card-title">SSO</h4>
+          <p class="card-text">
+            <i class="fas fa-shield-alt"></i> Possible interconnection with your various platforms to facilitate ticketing access.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-

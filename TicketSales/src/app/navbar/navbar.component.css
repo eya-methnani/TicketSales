@@ -3,16 +3,19 @@
   top: 0;
   z-index: 1020;
   background-color: rgba(255, 255, 255, 0.8); /* Blue background */
+  height:55px;
 }
 
-.navbar-nav .nav-item .nav-link {
-  color: rgb(4, 0, 35);
+
+
+.custom-color {
+  color: #050964 !important;
 }
 
-.btn-outline-light {
-  color: white;
-  border-color: white;
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(5,9,100, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
+
 
 .btn:hover {
   background-color: white;
@@ -20,3 +23,45 @@
 }
 
 
+/* Color of the links BEFORE scroll */
+.navbar-scroll .nav-link,
+.navbar-scroll .navbar-toggler-icon,
+.navbar-scroll .navbar-brand {
+  color: #262626;
+}
+
+/* Color of the navbar BEFORE scroll */
+.navbar-scroll {
+  background-color: #FFC017;
+}
+
+/* Color of the links AFTER scroll */
+.navbar-scrolled .nav-link,
+.navbar-scrolled .navbar-toggler-icon,
+.navbar-scroll .navbar-brand {
+  color: #262626;
+}
+
+/* Color of the navbar AFTER scroll */
+.navbar-scrolled {
+  background-color: #fff;
+}
+
+/* An optional height of the navbar AFTER scroll */
+.navbar.navbar-scroll.navbar-scrolled {
+  padding-top: auto;
+  padding-bottom: auto;
+}
+.navbar-brand {
+  font-size: unset;
+  height: 3 rem;
+}
+
+.dropdown-menu {
+  max-width: 100px; /* Adjust the max-width as needed */
+  word-wrap: break-word; /* Ensures long text will wrap within the container */
+}
+
+.dropdown-item {
+  white-space: normal; /* Allows text to wrap normally */
+}

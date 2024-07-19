@@ -3,6 +3,7 @@ import { SharedService } from '../shared.service';
 import { Router } from '@angular/router';
 import { CognitoServiceService } from '../cognito-service.service';
 
+import { createPopper } from '@popperjs/core';
 
 
 
@@ -33,8 +34,5 @@ export class NavbarComponent implements OnInit {
     
   }
 
-  logOut() {
-    // Add your logout logic here
-    this.router.navigate(['/login']); // Example of redirecting to login page after logout
-  }
+  
 }

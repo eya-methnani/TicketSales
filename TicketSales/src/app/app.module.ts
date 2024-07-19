@@ -10,7 +10,6 @@ import { SignupComponent } from './signup/signup.component';
 import { ConfirmSignupComponent } from './confirm-signup/confirm-signup.component';
 
 
-import { HttpClientModule } from '@angular/common/http';
 import { OrdersComponent } from './orders/orders.component';
 import { AddEventComponent } from './add-event/add-event.component';
 import { MyEventsComponent } from './my-events/my-events.component';  // Import HttpClientModule
@@ -20,6 +19,8 @@ import { CognitoServiceService } from './cognito-service.service';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { EventOrdersComponent } from './event-orders/event-orders.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    NgbModule
+    
     
   ],
   providers: [EventService, SharedService,CognitoServiceService],
