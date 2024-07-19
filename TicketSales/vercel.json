@@ -1,4 +1,5 @@
 {
+    "version": 2,
     "builds": [
       {
         "src": "angular.json",
@@ -15,4 +16,3 @@
       }
     ]
   }
-  
