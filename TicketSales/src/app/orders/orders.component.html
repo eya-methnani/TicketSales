@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-
+<!--
 <div class="container mt-5">
     <h2 class="mb-4 text-center">Available Events</h2>
     <div class="row">
@@ -11,6 +11,39 @@
             <p class="card-subtitle mb-2 text-muted">{{ event.description }}</p>
             <p class="card-text"><strong>$</strong>{{ event.price }}</p>
             <p class="card-text"><strong>Date:</strong> {{ event.date }}</p>
+
+
+
+
+          -->    
+
+<div style="background-color:  #f5f9fe;">
+
+ <div class="overlay-container">
+  <img src="https://res.cloudinary.com/atlanta/images/f_auto,q_auto/v1719630926/newAtlanta.com/Events_Tall_Hero_Shaky_Knees_1193177d03/Events_Tall_Hero_Shaky_Knees_1193177d03.jpg?_i=AA" alt="Event Banner" class="overlay-image">
+  <div class="overlay-text">
+    <h1 style="font-size: 100px;">Upcoming Events</h1>
+    <p style="font-size: 30px;">Join us for our upcoming events and activities.</p>
+  </div>
+</div>
+
+          
+          <div class="container">
+           
+            
+            <div class="event-list">
+              <div class="event-card" *ngFor="let event of events">
+                <img [src]="event.image" [src]="event.photo" class="event-image">
+                <div class="event-content">
+                  <h2 class="event-name">{{ event.name }}</h2>
+                  <p class="event-date">{{ event.date | date }}</p>
+                  <p class="event-description">{{ event.description }}</p>
+                      
+          
+
+
+          
+          
             <p class="card-text"><strong>Capacity:</strong> {{ event.capacity }}</p>
             <p class="card-text"><strong>Contact:</strong> {{ event.email }}</p>
             <button class="btn btn-outline-dark btn-block" (click)="addToCart(event)" [disabled]="event.capacity <= 0">Add to Bag</button>
@@ -18,7 +51,6 @@
         </div>
       </div>
     </div>
-  </div>
 
 
   <div class="cart fixed-bottom">
@@ -36,3 +68,4 @@
     <h6 class="cart-total">Total: ${{ totalPrice }}</h6>
     <button class="btn btn-outline-dark btn-block" (click)="checkout()">CheckOut</button>
   </div>
+</div>

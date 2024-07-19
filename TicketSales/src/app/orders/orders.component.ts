@@ -18,9 +18,7 @@ export class OrdersComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchEvents();
-    this.sharedService.currentEmail.subscribe(email => {
-      this.userEmail = email;
-    });
+    this.userEmail = localStorage.getItem('userEmail') || '';
   }
 
   fetchEvents() {

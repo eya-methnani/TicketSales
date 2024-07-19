@@ -1,48 +1,45 @@
-.container {
-    max-width: 1200px;
-  }
-  
-  .card {
-    height:600px ;
-    border: none;
-    margin-bottom: 30px;
-    background-color: rgb(236, 243, 255);
-  }
-  
-  .card-img-top {
-    max-height: 400px;
-    object-fit: cover;
-  }
-  
-  .card-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    text-align: center;
-  }
-  
-  
-  .card-subtitle {
-    text-align: center;
-    font-size: 1rem;
-    color: #666;
-  }
-  
-  .card-text {
-    font-size: 1rem;
-    text-align: center;
-  }
-  
-  .btn-block {
-    display: block;
-    width: 100%;
-    border: 1px solid #000;
-    font-weight: bold;
-    margin-top: 10px;
-    text-transform: uppercase;
-  }
-  
 
+  /* Overlay section */
+.overlay-container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
 
+.overlay-image {
+  width: 100%;
+  height: 60%;
+  display: block;
+}
+
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.overlay-button {
+  background-color: #36c2cf;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.overlay-button:hover {
+  background-color: #2a9da9;
+}
+  
+  
   .cart {
     position: fixed;
     right: 20px;
@@ -92,3 +89,93 @@
   .btn-outline-danger {
     margin-left: 10px;
   }
+
+
+
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    
+  }
+  
+  .header {
+    margin-bottom: 40px;
+  }
+  
+  .title {
+    font-size: 2.5em;
+    color: #050964;
+    font-family: 'Times New Roman', serif;
+    font-weight:bold;
+  }
+  
+  .subtitle {
+    font-size: 1.2em;
+    color: #777;
+  }
+  
+  .event-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .event-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+    text-align: left;
+  }
+  
+  .event-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .event-content {
+    padding: 20px;
+  }
+  
+  .event-name {
+    font-size: 1.5em;
+    color: #050964;
+    margin-bottom: 10px;
+  }
+  
+  .event-date {
+    font-size: 1em;
+    color: #777;
+    margin-bottom: 10px;
+  }
+  
+  .event-description {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  .event-button {
+    background-color: #36c2cf;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .event-button:hover {
+    background-color: #2a9da9;
+  }
+  

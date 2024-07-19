@@ -30,7 +30,9 @@
           <input type="number" class="form-control" id="capacity" [(ngModel)]="event.capacity" name="capacity">
         </div>
         <br>
-        <button type="submit" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3">Submit</button>
+          <button type="submit" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" [disabled]="loading" >Submit</button>
+          <div *ngIf="loading" class="loader"></div>
+
       </form>
     </div>
     <div class="col-md-6 gradient-custom-2 text-white d-flex align-items-center justify-content-center py-5 px-4">

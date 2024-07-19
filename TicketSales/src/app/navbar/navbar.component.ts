@@ -23,16 +23,19 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.sharedService.currentEmail.subscribe(email => {
-      this.userEmail = email;
-    });
-    this.authService.userRole.subscribe(role => {
-      this.userRole = role;
-    });
+    this.userEmail = localStorage.getItem('userEmail') || '';
+    this.userRole = localStorage.getItem('userRole') || '';
 
-    console.log(this.userRole)
-    
+    console.log(`NavbarComponent - userRole: ${this.userRole}, userEmail: ${this.userEmail}`);
   }
+    
+
+    
+  
+
+
 
   
 }
+
+  

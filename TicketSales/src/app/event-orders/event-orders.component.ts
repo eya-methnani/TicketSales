@@ -10,6 +10,8 @@ import { EventService } from '../event.service';
 export class EventOrdersComponent implements OnInit {
   orders: any[] = [];
   eventId: string = '';
+  totalEarned: number = 0;
+  loadingfetch: boolean = false;
 
   constructor(private route: ActivatedRoute, private eventService: EventService) {}
 
@@ -20,10 +22,21 @@ export class EventOrdersComponent implements OnInit {
   }
 
   fetchOrdersByEventId() {
+    this.loadingfetch = true;
     this.eventService.getOrdersByEventId(this.eventId).subscribe((response: any) => {
       this.orders = response.Items;
+      this.calculateTotalEarned();
+      this.loadingfetch = false;
     }, error => {
       console.error('Error fetching orders by event ID', error);
+      this.loadingfetch = false;
     });
   }
+
+
+  calculateTotalEarned() {
+    this.totalEarned = this.orders.reduce((total, order) => total + (order.price * order.quantity), 0);
+  }
+
+
 }

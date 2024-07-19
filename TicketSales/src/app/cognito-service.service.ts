@@ -42,6 +42,11 @@ export class CognitoServiceService {
         onSuccess: (result: any) => {
           this.getUserRole(emailaddress).then(role => {
             this.userRole.next(role);
+
+            localStorage.setItem('cognitoUser', JSON.stringify(result));
+            localStorage.setItem('userRole', role);
+            localStorage.setItem('userEmail', emailaddress)
+
             this.router.navigate(["/home"]);
             console.log("Success Results: ", result);
             resolve();
@@ -60,6 +65,31 @@ export class CognitoServiceService {
       });
     });
   }
+
+
+
+
+
+
+
+
+
+  getCurrentUser(): any {
+    const user = localStorage.getItem('cognitoUser');
+    return user ? JSON.parse(user) : null;
+  }
+
+  getCurrentUserRole(): string {
+    return localStorage.getItem('userRole') || '';
+  }
+
+
+
+
+
+
+
+
 
   async getUserRole(email: string): Promise<string> {
     const apiEndpoint = `${environment.apiGatewayEndpointRoleGetter}/items/${email}`;

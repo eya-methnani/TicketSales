@@ -2,21 +2,28 @@
 
 <div class="container mt-5">
   <h2 class="mb-4 text-center">My Orders</h2>
+  <div *ngIf="loadingfetch" class="loader"></div>
   <div *ngIf="orders.length === 0" class="text-center">
+
     <p>No orders found.</p>
   </div>
   <div class="row">
-    <div *ngFor="let order of orders" class="col-md-4 mb-4">
-      <div class="card">
-        <img class="card-img-top" [src]="order.photo" alt="Event photo">
-        <div class="card-body">
-          <h5 class="card-title">{{ order.eventName }}</h5>
-          <p class="card-subtitle mb-2 text-muted">{{ order.description }}</p>
-          <p class="card-text"><strong>Date:</strong> {{ order.eventDate }}</p>
-          <p class="card-text"><strong>Price:</strong> ${{ order.price }}</p>
-          <p class="card-text"><strong>Quantity:</strong> {{ order.quantity }}</p>
-          <p class="card-text"><strong>Contact:</strong> {{ order.contact }}</p>
-          <button class="btn btn-outline-dark btn-block" (click)="generateTicket(order)">Generate Ticket</button>
+    <div *ngFor="let order of orders" class="col-md-12 mb-4" >
+      <div class="order-item d-flex align-items-center justify-content-between" style="background: #f5f9fe;">
+        <div class="order-info d-flex align-items-center">
+          <img class="order-image" [src]="order.photo" alt="Event photo">
+          <div class="order-details">
+            <h5 class="order-title">{{ order.eventName }}</h5>
+            <p class="order-description">{{ order.description }}</p>
+            <p class="order-date"><strong>Date:</strong> {{ order.eventDate }}</p>
+            <p class="order-price"><strong>Price:</strong> ${{ order.price }}</p>
+            <p class="order-quantity"><strong>Quantity:</strong> {{ order.quantity }}</p>
+            <p class="order-contact"><strong>Contact:</strong> {{ order.contact }}</p>
+          </div>
+        </div>
+        <div class="order-actions">
+          <button class="btn btn-outline-dark" (click)="generateTicket(order)" [disabled]="loading">Generate Ticket</button>
+          <div *ngIf="loading" class="loader"></div>
         </div>
       </div>
     </div>

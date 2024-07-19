@@ -18,18 +18,17 @@ export class AddEventComponent implements OnInit {
     capacity: 0,
     email: ''
   };
+  loading: boolean = false;
+
 
   selectedFile: File | null = null;
 
   constructor(private eventService: EventService, private sharedService: SharedService , private router: Router) {}
 
   ngOnInit(): void {
-    this.sharedService.currentEmail.subscribe(email => {
-      this.event.email = email;
-      
-    });
-    console.log(this.event.email)
-    
+    this.event.email = localStorage.getItem('userEmail') || '';
+
+    console.log(this.event.email);
   }
 
   onFileChange(event: any) {
@@ -40,10 +39,12 @@ export class AddEventComponent implements OnInit {
   onSubmit() {
     
     if (this.selectedFile) {
+      this.loading=true;
       this.eventService.uploadPhoto(this.selectedFile).subscribe(photoUrl => {
         this.event.photo = photoUrl;
         console.log(this.event.photo)
         this.createEvent();
+        this.loading=false;
       }, error => {
         console.error('Error uploading photo', error);
       });

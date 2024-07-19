@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CognitoServiceService } from '../cognito-service.service';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-login',
@@ -12,18 +13,31 @@ export class LoginComponent {
   emailaddress: string = '';
   password: string = '';
   errorMessage: string = '';
+  loading: boolean = false;
 
-  constructor(private authservice: CognitoServiceService, private router: Router) { }
+  constructor(private authservice: CognitoServiceService, private router: Router ) { }
 
-  onSignIn(form: NgForm) {
+
+  ngOnInit(): void {
+    // Clear the local storage when the component initializes
+    localStorage.clear();
+  }
+
+  async onSignIn(form: NgForm) {
     if (form.valid) {
+      this.loading = true;
       this.authservice.login(this.emailaddress, this.password)
         .then(() => {
+          // Trigger navbar reload
           this.errorMessage = '';
           this.router.navigate(['/home']);
+          
         })
         .catch((error) => {
           this.errorMessage = error.message || 'An unknown error occurred';
+        })
+        .finally(() => {
+          this.loading = false;
         });
     }
   }

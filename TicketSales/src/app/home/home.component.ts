@@ -19,16 +19,12 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userEmail = this.authService.username;
-    this.sharedService.changeEmail(this.userEmail);
-    this.authService.userRole.subscribe(role => {
-      this.userRole = role;
-    });
+    this.userEmail = localStorage.getItem('userEmail') || '';
+    this.userRole = localStorage.getItem('userRole') || '';
+  
   }
 
-  logOut() {
-    this.authService.logOut();
-  }
+ 
 
   navigateTo(path: string) {
     this.router.navigate([`/${path}`]);

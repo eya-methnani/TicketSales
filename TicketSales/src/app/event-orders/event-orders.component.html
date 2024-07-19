@@ -1,20 +1,43 @@
 <app-navbar></app-navbar>
 
 <div class="container mt-5">
-    <h2 class="mb-4 text-center">Orders for Event ID: {{ eventId }}</h2>
-    <div *ngIf="orders.length === 0" class="text-center">
-      <p>No orders found for this event.</p>
-    </div>
-    <div class="row">
-      <div *ngFor="let order of orders" class="col-md-4 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Order for {{ order.eventName }}</h5>
-            <p class="card-text"><strong>Email:</strong> {{ order.email }}</p>
-            <p class="card-text"><strong>Quantity:</strong> {{ order.quantity }}</p>
+  <h2 class="mb-4 text-center">Orders for Event ID: {{ eventId }}</h2>
+  <div *ngIf="loadingfetch" class="loader"></div>
+  <div *ngIf="orders.length === 0" class="text-center">
+    <p>No orders found for this event.</p>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card mb-4">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
+            <h5 class="card-title">Order Details</h5>
+            <p class="card-text"><strong>Total Earned:</strong> ${{ totalEarned }}</p>
+          </div>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Event Name</th>
+                  <th>Email</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let order of orders">
+                  <td>{{ order.eventName }}</td>
+                  <td>{{ order.email }}</td>
+                  <td>{{ order.quantity }}</td>
+                  <td>${{ order.price }}</td>
+                  <td>${{ order.price * order.quantity }}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
   </div>
-  
+</div>

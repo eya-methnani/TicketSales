@@ -11,19 +11,22 @@ import { Router } from '@angular/router';
 export class MyEventsComponent implements OnInit {
   events: any[] = [];
   userEmail: string = '';
+  loadingfetch=false;
 
   constructor(private eventService: EventService, private sharedService: SharedService,private router :Router) {}
 
   ngOnInit(): void {
-    this.sharedService.currentEmail.subscribe(email => {
-      this.userEmail = email;
-      this.fetchEvents();
-    });
+    this.userEmail = localStorage.getItem('userEmail') || '';
+  
+    this.fetchEvents();
+  
   }
 
   fetchEvents() {
+    this.loadingfetch=true;
     this.eventService.getEventsByEmail(this.userEmail).subscribe((response: any) => {
       this.events = response.Items;
+      this.loadingfetch=false;
     }, error => {
       console.error('Error fetching events', error);
     });

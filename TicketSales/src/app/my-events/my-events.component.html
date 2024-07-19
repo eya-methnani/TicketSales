@@ -1,26 +1,30 @@
 <app-navbar></app-navbar>
 
 <div class="container mt-5">
-    <h2 class="mb-4 text-center">My Events</h2>
-    <div *ngIf="events.length === 0" class="text-center">
-      <p>No events found.</p>
-    </div>
-    <div class="row">
-      <div *ngFor="let event of events" class="col-md-4 mb-4">
-        <div class="card">
-          <img class="card-img-top" [src]="event.photo" alt="Event photo">
-          <div class="card-body">
-            <h5 class="card-title">{{ event.name }}</h5>
-            <p class="card-subtitle mb-2 text-muted">{{ event.description }}</p>
-            <p class="card-text"><strong>Date:</strong> {{ event.date }}</p>
-            <p class="card-text"><strong>Price:</strong> ${{ event.price }}</p>
-            <p class="card-text"><strong>Capacity:</strong> {{ event.capacity }}</p>
-            <p class="card-text"><strong>Contact:</strong> {{ event.email }}</p>
-            <button class="btn btn-primary mt-3" (click)="viewOrders(event.id)">View Orders</button>
-
+  <h2 class="mb-4 text-center">My Events</h2>
+  <div *ngIf="loadingfetch" class="loader"></div>
+  
+  <div *ngIf="events.length === 0" class="text-center">
+    <p>No events found.</p>
+  </div>
+  <div class="row">
+    <div *ngFor="let event of events" class="col-md-12 mb-4">
+      <div class="order-item d-flex align-items-center justify-content-between" style="background: #f5f9fe;">
+        <div class="order-info d-flex align-items-center">
+          <img class="order-image" [src]="event.photo" alt="Event photo">
+          <div class="order-details">
+            <h5 class="order-title">{{ event.name }}</h5>
+            <p class="order-description">{{ event.description }}</p>
+            <p class="order-date"><strong>Date:</strong> {{ event.date | date }}</p>
+            <p class="order-price"><strong>Price:</strong> ${{ event.price }}</p>
+            <p class="order-capacity"><strong>Capacity:</strong> {{ event.capacity }}</p>
+            <p class="order-contact"><strong>Contact:</strong> {{ event.email }}</p>
           </div>
+        </div>
+        <div class="order-actions">
+          <button class="btn btn-primary" (click)="viewOrders(event.id)">View Orders</button>
         </div>
       </div>
     </div>
   </div>
-  
+</div>

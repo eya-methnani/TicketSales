@@ -9,21 +9,39 @@
         <li class="nav-item text-center mx-2 mx-lg-1">
           <a class="nav-link active custom-color" aria-current="page" routerLink="/home">
             <div>
-              <i class="fas fa-home fa-lg mb-1 custom-color"></i>
+              <i class="bi bi-house"></i>
             </div>
             Home
           </a>
         </li>
-        <li class="nav-item active" *ngIf="userRole === 'event_creator'">
-          <a class="nav-link custom-color" routerLink="/add-event">Add Event</a>
+
+
+        <li class="nav-item text-center mx-2 mx-lg-1" *ngIf="userRole === 'event_creator'">
+          <a class="nav-link active custom-color" aria-current="page" routerLink="/add-event">
+            <div>
+              <i class="bi bi-plus-square"></i>
+            </div>
+            Add Events
+          </a>
         </li>
-        <li class="nav-item active" *ngIf="userRole === 'event_creator'">
-          <a class="nav-link custom-color" routerLink="/my-events">My Events</a>
+
+        
+
+
+
+        <li class="nav-item text-center mx-2 mx-lg-1" *ngIf="userRole === 'event_creator'">
+          <a class="nav-link active custom-color" aria-current="page" routerLink="/my-events">
+            <div>
+              <i class="bi bi-calendar4-event"></i>
+            </div>
+            My Events
+          </a>
         </li>
+
         <li class="nav-item text-center mx-2 mx-lg-1" *ngIf="userRole === 'participant'">
           <a class="nav-link active custom-color" aria-current="page" routerLink="/my-orders">
             <div>
-              <i class="fas fa-shopping-cart custom-color"></i>
+              <i class="bi bi-cart4"></i>
             </div>
             My Orders
           </a>
@@ -31,7 +49,7 @@
         <li class="nav-item text-center mx-2 mx-lg-1" *ngIf="userRole === 'participant'">
           <a class="nav-link active custom-color" aria-current="page" routerLink="/orders">
             <div>
-              <i class="fas fa-globe-americas fa-lg mb-1 custom-color"></i>
+              <i class="bi bi-calendar4-event"></i>
             </div>
             Events
           </a>
@@ -43,7 +61,7 @@
         <li class="nav-item text-center mx-2 mx-lg-1">
           <a class="nav-link active custom-color" aria-current="page" routerLink="/login">
             <div>
-              <i class="fa-solid fa-right-from-bracket custom-color"></i>
+              <i class="bi bi-box-arrow-right"></i>
             </div>
             Logout
           </a>

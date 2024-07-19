@@ -10,19 +10,23 @@ import { SharedService } from '../shared.service';
 export class MyOrdersComponent implements OnInit {
   orders: any[] = [];
   userEmail: string = '';
+  loading: boolean = false;
+  loadingfetch: boolean = false;
+
 
   constructor(private eventService: EventService, private sharedService: SharedService) {}
 
   ngOnInit(): void {
-    this.sharedService.currentEmail.subscribe(email => {
-      this.userEmail = email;
-      this.fetchOrders();
-    });
+    this.userEmail = localStorage.getItem('userEmail') || '';
+    this.fetchOrders();
+   
   }
 
   fetchOrders() {
+    this.loadingfetch=true;
     this.eventService.getOrdersByEmail(this.userEmail).subscribe((response: any) => {
       this.orders = response.Items;
+      this.loadingfetch=false;
     }, error => {
       console.error('Error fetching orders', error);
     });
@@ -30,10 +34,12 @@ export class MyOrdersComponent implements OnInit {
 
 
   generateTicket(order: any) {
+    this.loading = true;
     this.eventService.generateTicket(order).subscribe(
       (response: any) => {
         if (response.url) {
           window.open(response.url, '_blank');
+          this.loading = false;
         } else {
           console.error('Error generating ticket:', response);
         }
