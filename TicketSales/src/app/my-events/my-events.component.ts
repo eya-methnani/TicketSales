@@ -12,6 +12,10 @@ export class MyEventsComponent implements OnInit {
   events: any[] = [];
   userEmail: string = '';
   loadingfetch=false;
+  editingEventId: string | null = null; // To track which event is being edited
+  editEventForm: any = {}; // To store the form data
+  loadingsave =false;
+
 
   constructor(private eventService: EventService, private sharedService: SharedService,private router :Router) {}
 
@@ -36,6 +40,30 @@ export class MyEventsComponent implements OnInit {
   viewOrders(eventId: string) {
     console.log(eventId)
     this.router.navigate(['/event-orders', eventId]);
+  }
+
+
+
+  editEvent(event: any) {
+    this.editingEventId = event.id;
+    this.editEventForm = { ...event }; // Clone the event data for the form
+  }
+
+  cancelEdit() {
+    this.editingEventId = null;
+    this.editEventForm = {};
+  }
+
+  updateEvent() {
+    this.loadingsave=true
+    this.eventService.updateEvent(this.editEventForm).subscribe(response => {
+      console.log('Event updated successfully', response);
+      this.fetchEvents(); // Refresh events list
+      this.cancelEdit(); // Hide the form
+      this.loadingsave=false;
+    }, error => {
+      console.error('Error updating event', error);
+    });
   }
 
 

@@ -64,3 +64,40 @@
     100% { transform: rotate(360deg); }
   }
   
+
+
+  .edit-form {
+    background: #e9f5ff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -5px;
+    margin-left: -5px;
+  }
+  
+  .form-row > .col-md-6 {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+
+
+
+  .gradient-custom-2 {
+    /* fallback for old browsers */
+    background: #90dcfc;
+  
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, #248cee, #3684d8, #3641dd, #20058d);
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #248cee, #3684d8, #3641dd, #20058d);
+  }

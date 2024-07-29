@@ -14,6 +14,9 @@ export class EventService {
 
   private s3Url = `${environment.apiGatewayEndpointEventCreator}/upload-photo`;
 
+  private updateUrl = `${environment.apiGatewayEndpointEventCreator}/events`;
+
+
   constructor(private http: HttpClient) {}
 
   createEvent(event: any): Observable<any> {
@@ -121,6 +124,17 @@ export class EventService {
     );
 }
 
+
+updateEvent(event: any): Observable<any> {
+  return this.http.put<any>(`${this.updateUrl}`, event, {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  }).pipe(
+    catchError(error => {
+      console.error('Error updating event', error);
+      return throwError(error);
+    })
+  );
+}
 
 
 
