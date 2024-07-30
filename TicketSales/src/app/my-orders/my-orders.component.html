@@ -2,13 +2,33 @@
 
 <div class="container mt-5">
   <h2 class="mb-4 text-center">My Orders</h2>
+  <!-- Filter, Search, and Sort Section -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="d-flex">
+      <input type="text" [(ngModel)]="searchText" (ngModelChange)="filterOrders()" class="form-control mr-2" placeholder="Search by event name">
+      <input type="date" [(ngModel)]="filterDate" (ngModelChange)="filterOrders()" class="form-control mr-2" placeholder="Filter by date" style="margin-left: 10px;">
+      <button class="btn" (click)="resetFilters()" style="margin-left: 10px;">Reset Filters</button>
+    </div>
+    <div>
+      <select [(ngModel)]="sortCriteria" (change)="sortOrders()" class="form-control">
+        <option value="">Sort by</option>
+        <option value="date">Date</option>
+        <option value="price">Price</option>
+        <option value="quantity">Quantity</option>
+      </select>
+    </div>
+  </div>
+
+
+
+
   <div *ngIf="loadingfetch" class="loader"></div>
-  <div *ngIf="orders.length === 0" class="text-center">
+  <div *ngIf="filteredOrders.length === 0" class="text-center">
 
     <p>No orders found.</p>
   </div>
   <div class="row">
-    <div *ngFor="let order of orders" class="col-md-12 mb-4" >
+    <div *ngFor="let order of filteredOrders" class="col-md-12 mb-4">
       <div class="order-item d-flex align-items-center justify-content-between" style="background: #f5f9fe;">
         <div class="order-info d-flex align-items-center">
           <img class="order-image" [src]="order.photo" alt="Event photo">
@@ -19,11 +39,14 @@
             <p class="order-price"><strong>Price:</strong> ${{ order.price }}</p>
             <p class="order-quantity"><strong>Quantity:</strong> {{ order.quantity }}</p>
             <p class="order-contact"><strong>Contact:</strong> {{ order.contact }}</p>
+            <div *ngIf="order.deleted" class="alert alert-warning mt-3" role="alert">
+              We regret to inform you that the creator of this event has deleted it. For more information, please contact the event organizer.
+            </div>
           </div>
         </div>
         <div class="order-actions">
           <button class="btn btn-outline-dark" (click)="generateTicket(order)" [disabled]="loading">Generate Ticket</button>
-          <div *ngIf="loading" class="loader"></div>
+          <div *ngIf="loading===order" class="loader"></div>
         </div>
       </div>
     </div>

@@ -10,9 +10,13 @@ import { SharedService } from '../shared.service';
 })
 export class OrdersComponent implements OnInit {
   events: any[] = [];
+  filteredEvents: any[] = [];
   cart:any[]=[];
   totalPrice:number=0;
   userEmail:string='';
+  searchText: string = '';
+  filterDate: string = '';
+  sortCriteria: string = '';
 
   constructor(private eventService: EventService, private router:Router, private sharedService :SharedService ) {}
 
@@ -24,6 +28,8 @@ export class OrdersComponent implements OnInit {
   fetchEvents() {
     this.eventService.getEvents().subscribe((response: any) => {
       this.events = response.Items;
+      this.filteredEvents = this.events;
+      this.sortEvents(); // Ensure events are sorted on fetch
     }, error => {
       console.error('Error fetching events', error);
     });
@@ -89,4 +95,29 @@ export class OrdersComponent implements OnInit {
 
 
 
+  resetFilters() {
+    this.searchText = '';
+    this.filterDate = '';
+    this.filterEvents();
+  }
+
+  filterEvents() {
+    this.filteredEvents = this.events.filter(event => {
+      return (
+        (!this.searchText || event.name.toLowerCase().includes(this.searchText.toLowerCase())) &&
+        (!this.filterDate || event.date === this.filterDate)
+      );
+    });
+    this.sortEvents(); // Sort the filtered events
+  }
+
+  sortEvents() {
+    if (this.sortCriteria === 'date') {
+      this.filteredEvents.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    } else if (this.sortCriteria === 'price') {
+      this.filteredEvents.sort((a, b) => a.price - b.price);
+    } else if (this.sortCriteria === 'capacity') {
+      this.filteredEvents.sort((a, b) => a.capacity - b.capacity);
+    }
+  }
 }

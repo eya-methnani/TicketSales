@@ -63,3 +63,23 @@ button[disabled] {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.alert-warning {
+  color: #023e8a;
+  background-color: #e6f7fa;
+  border-color: #caf0f8;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+
+.d-flex .form-control {
+  width: auto;
+
+}
+
+.d-flex .btn {
+  white-space: nowrap;
+  border-color: #3498db;
+}
+

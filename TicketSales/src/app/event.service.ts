@@ -137,5 +137,18 @@ updateEvent(event: any): Observable<any> {
 }
 
 
+deleteEvent(eventId: string): Observable<any> {
+  return this.http.delete<any>(`${this.updateUrl}`, {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    body: { id: eventId }
+  }).pipe(
+    catchError(error => {
+      console.error('Error deleting event', error);
+      return throwError(error);
+    })
+  );
+}
+
+
 
 }

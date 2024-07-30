@@ -89,15 +89,17 @@
     padding-left: 5px;
   }
 
+.order-actions .bi-eye,
+.order-actions .bi-pencil-square,
+.order-actions .bi-trash3 {
+  font-size: 1.5em;
+  cursor: pointer;
+  color: #007bff;
+  margin-left: 10px;
+}
 
-
-  .gradient-custom-2 {
-    /* fallback for old browsers */
-    background: #90dcfc;
-  
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, #248cee, #3684d8, #3641dd, #20058d);
-  
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, #248cee, #3684d8, #3641dd, #20058d);
-  }
+.order-actions .bi-eye:hover,
+.order-actions .bi-pencil-square:hover,
+.order-actions .bi-trash3:hover {
+  color: #0056b3;
+}

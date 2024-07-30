@@ -22,13 +22,11 @@
           </div>
         </div>
         <div class="order-actions">
-          <button class="btn btn-primary" (click)="viewOrders(event.id)" >View Orders</button>
-          <br>
-       
-
-
-
-          <button class="btn btn-secondary" (click)="editEvent(event)">Edit Event</button>
+          <i class="bi bi-eye" (click)="viewOrders(event.id)" title="View Orders"></i>
+          <i class="bi bi-pencil-square ml-3" (click)="editEvent(event)" title="Edit Event"></i>
+          <i class="bi bi-trash3 ml-3" (click)="deleteEvent(event.id)" title="Delete Event"></i>
+          <div *ngIf="loadingDeleteId === event.id" class="loader ml-3"></div>
+          
         </div>
       </div>
       <!-- Edit form section -->

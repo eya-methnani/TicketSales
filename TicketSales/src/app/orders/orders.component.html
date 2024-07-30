@@ -28,14 +28,34 @@
 </div>
 
           
-          <div class="container">
+<div class="container">
+  <!-- Filter, Search, and Sort Section -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="d-flex">
+      <input type="text" [(ngModel)]="searchText" (ngModelChange)="filterEvents()" class="form-control mr-2" placeholder="Search by event name">
+      <input type="date" [(ngModel)]="filterDate" (ngModelChange)="filterEvents()" class="form-control mr-2" placeholder="Filter by date" style="margin-left: 10px;">
+      <button class="btn" (click)="resetFilters()" style="margin-left: 10px;">Reset Filters</button>
+    </div>
+    <div>
+      <select [(ngModel)]="sortCriteria" (change)="sortEvents()" class="form-control" style="margin-left: 10px;">
+        <option value="">Sort by</option>
+        <option value="date">Date</option>
+        <option value="price">Price</option>
+        <option value="capacity">Capacity</option>
+      </select>
+    </div>
+  </div>
            
             
             <div class="event-list">
-              <div class="event-card" *ngFor="let event of events">
+              <div class="event-card" *ngFor="let event of filteredEvents">
                 <img [src]="event.image" [src]="event.photo" class="event-image">
                 <div class="event-content">
-                  <h2 class="event-name">{{ event.name }}</h2>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <h2 class="event-name">{{ event.name }}</h2>
+                    <span class="event-price">${{ event.price }}</span>
+                  </div>
+                  
                   <p class="event-date">{{ event.date | date }}</p>
                   <p class="event-description">{{ event.description }}</p>
                       
@@ -47,6 +67,7 @@
             <p class="card-text"><strong>Capacity:</strong> {{ event.capacity }}</p>
             <p class="card-text"><strong>Contact:</strong> {{ event.email }}</p>
             <button class="btn btn-outline-dark btn-block" (click)="addToCart(event)" [disabled]="event.capacity <= 0">Add to Bag</button>
+            
           </div>
         </div>
       </div>
