@@ -12,6 +12,7 @@ import { AddEventComponent } from './add-event/add-event.component';
 import { MyEventsComponent } from './my-events/my-events.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { EventOrdersComponent } from './event-orders/event-orders.component';
+import { PaymentComponent } from './payment/payment.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,9 @@ const routes: Routes = [
   { path: 'my-events', component: MyEventsComponent },
   { path: 'my-orders', component: MyOrdersComponent },
   { path: 'event-orders/:eventId', component: EventOrdersComponent },
+
+
+  { path: 'payment', component: PaymentComponent }
 
 
 

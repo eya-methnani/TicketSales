@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../event.service';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { SharedService } from '../shared.service';
 
 @Component({
@@ -67,7 +67,7 @@ export class OrdersComponent implements OnInit {
 
 
   checkout() {
-    const order = {
+  /*  const order = {
       email: this.userEmail,
       cart: this.cart
     };
@@ -88,6 +88,21 @@ export class OrdersComponent implements OnInit {
     }, error => {
       console.error('Error updating event capacities', error);
     });
+
+
+
+    */
+
+
+    const navigationExtras: NavigationExtras = {
+      state: {
+        totalPrice: this.totalPrice,
+        userEmail: this.userEmail,
+        cart: this.cart
+      }
+    };
+    this.router.navigate(['/payment'], navigationExtras);
+  
   }
 
 

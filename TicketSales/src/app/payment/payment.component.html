@@ -1,0 +1,67 @@
+<div class="gradient-background gradient-custom-2" >
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card p-4">
+          <h2 class="mb-4">Checkout</h2>
+          <form>
+            <!-- Contact Information -->
+            <div class="form-section mb-4">
+              <h4>1. Contact Information</h4>
+              <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" class="form-control" id="fullName"  placeholder="Enter your name" name="fullName">
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" name="phone">
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" class="form-control" id="email" [(ngModel)]="userEmail" placeholder="Enter your email" name="email">
+              </div>
+            </div>
+
+            <!-- Payment Method -->
+            <div class="form-section mb-4">
+              <h4>2. Payment Method</h4>
+              <div id="card-element" class="form-control mb-3"></div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="form-section text-center">
+              <button class="btn btn-primary btn-block gradient-custom-2 " (click)="handlePayment()" [disabled]="loading">
+                Confirm and Pay {{totalPrice}}$
+              </button>
+              <button class="btn btn-secondary btn-block" (click)="cancelPayment()" [disabled]="loading">Cancel</button>
+              <div *ngIf="loading" class="loader"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card summary-card">
+          <div class="card-body">
+            <h4 class="card-title">Order Summary</h4>
+            <ul class="list-group mb-3">
+              <li class="list-group-item d-flex justify-content-between lh-condensed" *ngFor="let item of cart">
+                <div>
+                  <h6 class="my-0">{{ item.name }}</h6>
+                  <small class="text-muted">x{{ item.quantity }}</small>
+                </div>
+                <span class="text-muted">{{ item.price }}$</span>
+              </li>
+            </ul>
+            <ul class="list-group mb-3">
+              <li class="list-group-item d-flex justify-content-between">
+                <span>Total (USD)</span>
+                <strong>{{ totalPrice }}$</strong>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

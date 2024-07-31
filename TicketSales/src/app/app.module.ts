@@ -21,6 +21,7 @@ import { EventOrdersComponent } from './event-orders/event-orders.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MyOrdersComponent,
     EventOrdersComponent,
     NavbarComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,
