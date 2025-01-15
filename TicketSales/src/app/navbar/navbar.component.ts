@@ -13,8 +13,8 @@ import { createPopper } from '@popperjs/core';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent implements OnInit {
-  userRole: string = '';
-  userEmail: string = '';
+  userRole = '';
+  userEmail = '';
 
   constructor(
     private authService: CognitoServiceService,

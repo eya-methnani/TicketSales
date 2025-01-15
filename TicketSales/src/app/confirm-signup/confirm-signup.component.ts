@@ -9,10 +9,10 @@ import { CognitoServiceService } from '../cognito-service.service';
   styleUrls: ['./confirm-signup.component.css']
 })
 export class ConfirmSignupComponent {
-  email: string = '';
-  confirmationCode: string = '';
-  errorMessage: string = '';
-  successMessage: string = '';
+  email = '';
+  confirmationCode = '';
+  errorMessage = '';
+  successMessage = '';
 
   constructor(private cognitoService: CognitoServiceService, private router: Router) { }
 

@@ -9,8 +9,8 @@ import { SharedService } from '../shared.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  userEmail: string = '';
-  userRole: string = '';
+  userEmail = '';
+  userRole = '';
 
   constructor(
     private authService: CognitoServiceService,

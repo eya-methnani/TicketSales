@@ -18,7 +18,7 @@ export class AddEventComponent implements OnInit {
     capacity: 0,
     email: ''
   };
-  loading: boolean = false;
+  loading = false;
 
 
   selectedFile: File | null = null;

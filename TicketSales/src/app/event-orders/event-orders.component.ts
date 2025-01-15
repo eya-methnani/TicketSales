@@ -9,9 +9,9 @@ import { EventService } from '../event.service';
 })
 export class EventOrdersComponent implements OnInit {
   orders: any[] = [];
-  eventId: string = '';
-  totalEarned: number = 0;
-  loadingfetch: boolean = false;
+  eventId = '';
+  totalEarned = 0;
+  loadingfetch = false;
 
   constructor(private route: ActivatedRoute, private eventService: EventService) {}
 

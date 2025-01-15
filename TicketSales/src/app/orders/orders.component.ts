@@ -12,11 +12,11 @@ export class OrdersComponent implements OnInit {
   events: any[] = [];
   filteredEvents: any[] = [];
   cart:any[]=[];
-  totalPrice:number=0;
-  userEmail:string='';
-  searchText: string = '';
-  filterDate: string = '';
-  sortCriteria: string = '';
+  totalPrice=0;
+  userEmail='';
+  searchText = '';
+  filterDate = '';
+  sortCriteria = '';
 
   constructor(private eventService: EventService, private router:Router, private sharedService :SharedService ) {}
 

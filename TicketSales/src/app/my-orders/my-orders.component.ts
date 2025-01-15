@@ -10,12 +10,12 @@ import { SharedService } from '../shared.service';
 export class MyOrdersComponent implements OnInit {
   orders: any[] = [];
   filteredOrders: any[] = [];
-  userEmail: string = '';
+  userEmail = '';
   loading:any | null=null;
-  loadingfetch: boolean = false;
-  searchText: string = '';
-  filterDate: string = '';
-  sortCriteria: string = '';
+  loadingfetch = false;
+  searchText = '';
+  filterDate = '';
+  sortCriteria = '';
 
 
 

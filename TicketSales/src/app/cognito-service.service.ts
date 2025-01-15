@@ -16,7 +16,7 @@ import { BehaviorSubject } from 'rxjs';
 export class CognitoServiceService {
   userPool: CognitoUserPool;
   cognitoUser: CognitoUser | null = null;
-  username: string = "";
+  username = "";
   userRole: BehaviorSubject<string> = new BehaviorSubject<string>("");
 
   constructor(private router: Router, private http: HttpClient) { 

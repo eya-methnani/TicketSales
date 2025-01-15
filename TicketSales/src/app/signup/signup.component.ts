@@ -9,16 +9,16 @@ import { CognitoServiceService } from '../cognito-service.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent {
-  email: string = '';
-  password: string = '';
-  name: string = '';
-  familyName: string = '';
-  birthdate: string = '';
-  gender: string = 'option1'; // default gender
-  phoneNumber: string = '';
-  errorMessage: string = '';
-  successMessage: string = '';
-  role:string='';
+  email = '';
+  password = '';
+  name = '';
+  familyName = '';
+  birthdate = '';
+  gender = 'option1'; // default gender
+  phoneNumber = '';
+  errorMessage = '';
+  successMessage = '';
+  role='';
   
 
   constructor(private cognitoService: CognitoServiceService, private router: Router) { }

@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class MyEventsComponent implements OnInit {
   events: any[] = [];
-  userEmail: string = '';
+  userEmail = '';
   loadingfetch=false;
   loadingDeleteId: string | null = null; // For the delete button loader
   editingEventId: string | null = null; // To track which event is being edited

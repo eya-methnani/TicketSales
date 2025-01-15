@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CognitoServiceService } from '../cognito-service.service';
@@ -9,11 +9,11 @@ import { SharedService } from '../shared.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
-  emailaddress: string = '';
-  password: string = '';
-  errorMessage: string = '';
-  loading: boolean = false;
+export class LoginComponent implements OnInit {
+  emailaddress = '';
+  password = '';
+  errorMessage = '';
+  loading = false;
 
   constructor(private authservice: CognitoServiceService, private router: Router ) { }
 

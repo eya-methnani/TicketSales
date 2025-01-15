@@ -15,11 +15,11 @@ export class PaymentComponent implements OnInit {
   stripe: Stripe | null = null;
   card: StripeCardElement | null = null;
   clientSecret: string | undefined;
-  totalAmount: number = 0;
-  userEmail: string = '';
+  totalAmount = 0;
+  userEmail = '';
   cart: any[] = [];
-  totalPrice: number = 0;
-  loading: boolean = false;
+  totalPrice = 0;
+  loading = false;
 
   constructor(
     private paymentService: PaymentService,
