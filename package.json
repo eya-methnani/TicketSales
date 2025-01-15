@@ -5,6 +5,6 @@
   "scripts": {
     "prepare": "husky install",
     "precommit": "node scripts/check-todo.js",
-    "test": "jest"
+    "test": "jest --coverage"
   }
 }
