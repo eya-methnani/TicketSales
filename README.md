@@ -12,8 +12,6 @@ TicketSales is a scalable, serverless web application designed for the online sa
 6. [Usage](#usage)
 7. [Screenshots](#screenshots)
 8. [Future Enhancements](#future-enhancements)
-9. [License](#license)
-
 ---
 
 ## Features
@@ -179,10 +177,5 @@ The development of TicketSales followed Agile principles, specifically the Scrum
 - **Email and SMS Notifications**: Integrating notifications for ticket purchases, event updates, and reminders.
 - **Advanced Ticket Management**: Implementing features for ticket transfers, refunds, and event cancellations.
 
----
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
 
 ---
